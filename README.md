@@ -1,12 +1,30 @@
-# React + Vite
+<!-- project name -->
+   LocalChefBazaar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+<!-- purpose -->
+  Serve healthy foods to customers.We prepare delicious food for you and always care about your health.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<!-- live URL -->
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+<!-- key features -->
+
+<!-- 📦 Real-time parcel tracking
+🔐 Secure authentication (Firebase / JWT)
+🧾 Order management system
+🗺️ Location-based delivery tracking
+👨‍💼 Role-based dashboard (Admin, User, Rider) -->
+
+<!-- npm pakages -->
+   <!-- for fontend -->
+1.react router
+2.tailwind css
+3.daisy ui
+4.react icons
+5.react.js
+
+
+
+   <!-- for backend -->
