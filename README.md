@@ -24,7 +24,12 @@
 3.daisy ui
 4.react icons
 5.react.js
-
+6.framer-motion
+7.axios
 
 
    <!-- for backend -->
+1.express
+2.cors
+3.dotenv
+4.mongodb
