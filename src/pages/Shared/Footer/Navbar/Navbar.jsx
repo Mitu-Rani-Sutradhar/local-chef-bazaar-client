@@ -1,11 +1,35 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import logoImg from '../../../../assets/logo.png'
+import useAuth from '../../../../hooks/useAuth';
 const Navbar = () => {
+
+  const {user, logOut} = useAuth();
+  console.log(user);
+
+  const handleLogOut = () =>{
+    logOut()
+    .then()
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
  const links = <>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/meals">Meals</NavLink></li>
-      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+      
+     
+     {/* {
+      user && <>
+       <li><NavLink to="/dashboard/my-orders">My Orders</NavLink></li>
+       <li><NavLink to="/dashboard/profile">Profile</NavLink></li>
+      </>
+     } */}
+     {
+      user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+     }
+      
  </>
 
 
@@ -32,7 +56,36 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+   
+  
+   {/* { 
+    user ?  
+     
+    <a onClick={handleLogOut} className="btn btn-primary">LogOut</a> 
+    :  
+    <Link className="btn" to='/login'>Login</Link>
+   } */}
+
+   {
+    user ? (
+      <div className="flex items-center gap-3">
+      {/* User Photo */}
+      <img
+        src={user?.photoURL}
+        alt={user?.displayName || "User"}
+        className="w-10 h-10 rounded-full object-cover border"
+      />
+
+
+      {/* Logout Button */}
+      <a onClick={handleLogOut} className="btn btn-primary">
+        LogOut
+      </a>
+    </div>
+    ): 
+    <Link className="btn" to='/login'>Login</Link>
+   }
+   
   </div>
 </div>
     );

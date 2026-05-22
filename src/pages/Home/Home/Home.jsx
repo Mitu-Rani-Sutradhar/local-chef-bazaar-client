@@ -1,12 +1,16 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import Reviews from './Reviews/Reviews';
+import DailyMeals from '../DailyMeals/DailyMeals';
 
 
 
 const reviewsPromise = fetch('http://localhost:3000/reviews')
 .then(res => res.json());
 // console.log(reviewsPromise);
+
+const mealsPromise = fetch('http://localhost:3000/daily-meals')
+.then(res => res.json());
 
 
 
@@ -16,6 +20,7 @@ const Home = () => {
         <div>
           <Banner></Banner>
           <Reviews reviewsPromise={reviewsPromise}></Reviews>
+          <DailyMeals mealsPromise={mealsPromise}></DailyMeals>
         </div>
     );
 };

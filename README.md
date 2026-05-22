@@ -25,7 +25,7 @@
 4.react icons
 5.react.js
 6.framer-motion
-7.axios
+7.firebase
 
 
    <!-- for backend -->
