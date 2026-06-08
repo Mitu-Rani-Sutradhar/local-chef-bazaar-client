@@ -65,7 +65,7 @@ const Banner = () => {
         </div>
         <div className='m-5 relative'>
             <img className="w-100 rounded-xl" src={food1Img} alt="" />
-            <img className='absolute w-30 lg:w-60 top-25 -left-35 rounded-xl border-6 border-white' src={food2Img} alt="" />
+            <img className='absolute w-30 left-4 lg:w-60 top-30 rounded-xl border-6 border-white' src={food2Img} alt="" />
         </div>
     </div>
     )

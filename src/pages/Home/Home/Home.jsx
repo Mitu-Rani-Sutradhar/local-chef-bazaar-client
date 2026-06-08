@@ -5,11 +5,11 @@ import DailyMeals from '../DailyMeals/DailyMeals';
 
 
 
-const reviewsPromise = fetch('http://localhost:3000/reviews')
+const reviewsPromise = fetch('https://local-chef-bazaar-server-two.vercel.app/reviews')
 .then(res => res.json());
 // console.log(reviewsPromise);
 
-const mealsPromise = fetch('http://localhost:3000/daily-meals')
+const mealsPromise = fetch('https://local-chef-bazaar-server-two.vercel.app/daily-meals')
 .then(res => res.json());
 
 

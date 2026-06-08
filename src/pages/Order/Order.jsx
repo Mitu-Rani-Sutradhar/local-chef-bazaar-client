@@ -20,7 +20,7 @@ const Order = () => {
 
  
    useEffect(() => {
-     fetch(`http://localhost:3000/meals/${id}`)
+     fetch(`https://local-chef-bazaar-server-two.vercel.app/meals/${id}`)
        .then(res => res.json())
        .then(data => {
          console.log(data);
@@ -33,8 +33,8 @@ const Order = () => {
   if (meals) {
     reset({
       foodName: meals.foodName,
-      chefId: meals._id,
-      email:user.email,
+      chefEmail: meals.ChefEmail,
+      userEmail:user.email,
       orderStatus: "pending",
       price: meals.price
       
@@ -162,19 +162,19 @@ const orderData = {
               />
 
          {/* cgefId */}
-          <label className="label">chefId</label>
-             <input type="text" className="input" name='chefId'
-             {...register("chefId")} 
+          <label className="label">chefEmail</label>
+             <input type="text" className="input" name='ChefEmail'
+            //  {...register("ChefEmail")} 
              readOnly 
-            //  value={meals?.chefId || ''}
-              />
+              value={meals?.ChefEmail || ''}
+               />
 
 
          {/* user email */}
          <label className="label">userEmail</label>
                                     <input type="email" className="input" name='userEmail' readOnly
                                     {...register("email")}
-                                    // defaultValue={user?.email}
+                                    defaultValue={user?.email}
                                      />
 
 

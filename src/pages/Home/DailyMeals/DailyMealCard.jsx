@@ -7,15 +7,15 @@ foodIamge,
 chefName, price = "foodPrice", 
 deliveryArea} = meal;
     return (
-      <div>
-     <div className="card bg-base-100 w-96 shadow-sm">
-  <figure className="px-1 pt-8">
+      
+     <div className="card bg-base-100 w-75 h-100 shadow-sm mb-5">
+  <figure className="p-4">
     <img
       src={
 foodIamge}
       className="rounded-xl  w-[320px] h-[180px]" />
   </figure>
-  <div className="card-body px-10">
+  <div className="card-body px-4 py-2">
     <div className=''>
         <p className="font-semibold"><span className='text-lg font-bold'>Chef Id:</span>{_id}</p>
         <p className='text-lg'><span className='font-bold'>Chef-Name:</span> {chefName}</p>
@@ -33,7 +33,7 @@ foodIamge}
     </div>
   </div>
 </div>
-        </div>
+      
     );
 };
 

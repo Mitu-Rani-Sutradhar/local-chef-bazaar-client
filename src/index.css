@@ -9,10 +9,18 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: blue;
-  --color-secondary: #03373D;
+  --color-primary: #2563eb;
+  --color-secondary: #10b981;
+  --color-accent: #f59e0b;
 }
 
+.dark {
+  
+  --primary: #3b82f6;
+  --secondary: #34d399;
+  --accent: #fbbf24;
+
+}
 
 
 body{

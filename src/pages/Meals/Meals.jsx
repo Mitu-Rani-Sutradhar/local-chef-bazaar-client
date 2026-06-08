@@ -6,7 +6,7 @@ const Meals = () => {
   const [meals, setMeals] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/meals')
+    fetch('https://local-chef-bazaar-server-two.vercel.app/meals')
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -21,7 +21,7 @@ const Meals = () => {
             <h2 className="text-4xl text-center my-6 font-bold">Meals: {meals.length}</h2>
 
 
-         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-6">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {meals.map(meal => (
           <MealsCard
             key={meal._id}

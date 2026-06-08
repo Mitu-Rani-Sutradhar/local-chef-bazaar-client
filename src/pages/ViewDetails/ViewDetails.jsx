@@ -14,7 +14,10 @@ console.log(meal)
         <div>
             <h2 className='text-4xl font-bold text-center my-7'>The Meal Details</h2>
 
-            <div className='flex justify-around p-7 gap-3'>
+            <div className='lg:flex justify-around p-7 gap-3'>
+
+                <div> <img className='h-[350px] w-[600px] pb-5' src={meal.
+foodIamge} alt="" /></div>
               
                <div> <p><span className='font-bold text-lg'>Food-Name:</span> {meal.foodName}</p>
                 <p><span className='font-bold text-lg pt-3'>Chef-Name:</span> {meal.chefName}</p>
@@ -27,11 +30,10 @@ console.log(meal)
                 <p><span className='font-bold text-lg pt-3'>Chef-Experience:</span> {meal.chefExperience}</p>
                 <p><span className='font-bold text-lg pt-3'>ChefId:</span>{meal._id}</p>
 
-                 <Link to={`/order/${meal._id}`}><button className='btn btn-primary mt-6'>Order Now</button></Link>
+                 <Link to={`/order/${meal._id}`}><button className='btn btn-primary mt-6 mb-5'>Order Now</button></Link>
                 </div>
 
-                 <div> <img className='h-[350px] w-[600px]' src={meal.
-foodIamge} alt="" /></div>
+                 
        
             </div>
         

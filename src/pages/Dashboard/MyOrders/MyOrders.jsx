@@ -84,7 +84,7 @@ const MyOrders = () => {
                             <th></th>
                             <th>Food Name</th>
                             <th>Chef Name</th>
-                            <th>Chef ID</th>
+                            <th>Chef Email</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Order Status </th>
@@ -100,7 +100,7 @@ const MyOrders = () => {
                                 <th>{index + 1}</th>
                                 <td>{order.foodName}</td>
                                 <td>{order.chefName}</td>
-                                <td>{order.chefId}</td>
+                                <td>{order.chefEmail}</td>
                                 <td>{order.price * order.quantity}</td>
                                 <td>{order.quantity}</td>
                                 <td> {order.deliveryStatus}
