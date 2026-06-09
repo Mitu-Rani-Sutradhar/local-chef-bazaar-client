@@ -25,7 +25,7 @@ const CreateMeal = () => {
              formData.append('image', foodImg);
              
              const food_image_API_URL =`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_food_image}`
-         axios.post(food_image_API_URL, formData)
+        //  axios.post(food_image_API_URL, formData)
     
                axios.post(food_image_API_URL, formData)
              .then(res => {
