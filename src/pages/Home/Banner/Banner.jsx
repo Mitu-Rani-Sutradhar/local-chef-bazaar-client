@@ -56,18 +56,47 @@ const Banner = () => {
     //   </div>
     // </div>
 
-    <div className='flex p-4 items-center justify-between'>
-        <div className='text-center'>
+    // <div className='flex p-4 items-center justify-between'>
+    //     <div className='text-center'>
            
-              <h2 className='text-4xl font-bold'>Baked to delight served with <span className='text-orange-300'>LOVE</span></h2>
-              <p className='text-lg'>Choose one that suits your taste and your budget.</p>
-             <Link to='/meals'> <button className='btn btn-primary p-4 m-4'>Order now</button></Link>
-        </div>
-        <div className='m-5 relative'>
-            <img className="w-100 rounded-xl" src={food1Img} alt="" />
-            <img className='absolute w-30 left-4 lg:w-60 top-30 rounded-xl border-6 border-white' src={food2Img} alt="" />
-        </div>
-    </div>
+    //           <h2 className='text-4xl font-bold'>Baked to delight served with <span className='text-orange-300'>LOVE</span></h2>
+    //           <p className='text-lg'>Choose one that suits your taste and your budget.</p>
+    //          <Link to='/meals'> <button className='btn btn-primary p-4 m-4'>Order now</button></Link>
+    //     </div>
+    //     <div className='m-5 relative'>
+    //         <img className="w-100 rounded-xl" src={food1Img} alt="" />
+    //         <img className='absolute w-30 left-4 lg:w-60 top-30 rounded-xl border-6 border-white' src={food2Img} alt="" />
+    //     </div>
+    // </div>
+
+    <div className='flex h-[60vh] p-4 items-center justify-between overflow-hidden'>
+  <div className='text-center'>
+    <h2 className='text-4xl font-bold'>
+      Baked to delight served with <span className='text-orange-300'>LOVE</span>
+    </h2>
+    <p className='text-lg'>
+      Choose one that suits your taste and your budget.
+    </p>
+    <Link to='/meals'>
+      <button className='btn btn-primary p-4 m-4'>
+        Order now
+      </button>
+    </Link>
+  </div>
+
+  <div className='m-5 relative'>
+    <img
+      className="w-80 lg:w-96 rounded-xl object-cover"
+      src={food1Img}
+      alt=""
+    />
+    <img
+      className='absolute w-24 lg:w-48 left-4 top-24 lg:top-32 rounded-xl border-4 border-white'
+      src={food2Img}
+      alt=""
+    />
+  </div>
+</div>
     )
 }
 
