@@ -5,9 +5,6 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-
-
 const CreateMeal = () => {
     
       const { register,handleSubmit } =useForm();
@@ -19,18 +16,18 @@ const CreateMeal = () => {
 
       
     const handleCreateOrder = (data) => {
-        // console.log(data.foodImage[0]);
+    
        const foodImg = data.foodImage[0];
       const formData = new FormData();
              formData.append('image', foodImg);
              
              const food_image_API_URL =`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_food_image}`
-        //  axios.post(food_image_API_URL, formData)
+    // console.log(import.meta.env.VITE_food_image);
     
                axios.post(food_image_API_URL, formData)
              .then(res => {
                 const foodIamge = res.data.data.url;
-
+               console.log(foodIamge);
             const foodInfo = {
                 foodName: data.foodName,
                 chefName: user.displayName,
