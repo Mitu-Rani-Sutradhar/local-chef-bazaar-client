@@ -2,6 +2,11 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import Reviews from './Reviews/Reviews';
 import DailyMeals from '../DailyMeals/DailyMeals';
+import OurServices from '../OurServices/OurServices';
+import HowItsWorks from './HowItsWorks/HowItsWorks';
+import WhatMakesUsDifferent from './WhatMakesUsDifferent/WhatMakesUsDifferent';
+import Faq from './Faq/Faq';
+import Testimonials from '../Testimonials/Testimonials';
 
 
 
@@ -21,6 +26,11 @@ const Home = () => {
           <Banner></Banner>
           <Reviews reviewsPromise={reviewsPromise}></Reviews>
           <DailyMeals mealsPromise={mealsPromise}></DailyMeals>
+          <OurServices></OurServices>
+          <HowItsWorks></HowItsWorks>
+          <WhatMakesUsDifferent></WhatMakesUsDifferent>
+          <Faq></Faq>
+          <Testimonials></Testimonials>
         </div>
     );
 };
