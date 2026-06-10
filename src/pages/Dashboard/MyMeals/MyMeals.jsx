@@ -20,6 +20,8 @@ const { data: meals = [] } = useQuery({
 console.log(meals);
 
 
+
+
     return (
         <div>
             <h2 className='text-4xl text-center font-bold my-5'>My Meals: {meals.length}</h2>

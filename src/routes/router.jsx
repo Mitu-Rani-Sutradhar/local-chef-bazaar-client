@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       {
         path: 'meals/:id',
         loader: ({params}) => fetch(`https://local-chef-bazaar-server-two.vercel.app/meals/${params.id}`),
-        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        element: <ViewDetails></ViewDetails>,
           
       },
       {
