@@ -33,3 +33,12 @@
 2.cors
 3.dotenv
 4.mongodb
+
+Live Link: https://chef-bazaar-8992b.web.app/
+
+Client side github Link: https://github.com/Mitu-Rani-Sutradhar/local-chef-bazaar-client
+
+Server side github Link: https://github.com/Mitu-Rani-Sutradhar/local-chef-bazar-server
+
+Admin email: admin@gmail.com
+Admin password: Admin12345
