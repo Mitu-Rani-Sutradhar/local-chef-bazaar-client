@@ -36,6 +36,7 @@ const Order = () => {
       chefEmail: meals.ChefEmail,
       userEmail:user.email,
       orderStatus: "pending",
+      deliveryStatus: "pending",
       price: meals.price
       
     
@@ -108,7 +109,13 @@ const { data: userInfo = {}, isLoading } = useQuery({
 // save the order info server
 
 const orderData = {
-  ...data,foodId:meals._id,chefName:meals.chefName
+  ...data,
+  foodId: meals._id,
+  chefName: meals.chefName,
+  chefEmail: meals.ChefEmail,
+  userEmail: user.email,
+  orderStatus: 'pending',
+  deliveryStatus: 'pending',
 };
     axiosSecure.post('/orders', orderData )
     .then(res =>{

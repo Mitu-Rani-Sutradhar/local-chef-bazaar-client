@@ -1,318 +1,503 @@
-// import React from 'react';
+import React from "react";
+import { Link, NavLink } from "react-router";
+import { motion } from "framer-motion";
+import logoImg from "../../../../assets/logo.png";
+import useAuth from "../../../../hooks/useAuth";
 
-// import { Link, NavLink } from 'react-router';
-// import logoImg from '../../../../assets/logo.png'
-// import useAuth from '../../../../hooks/useAuth';
-// const Navbar = () => {
-
-//   const {user, logOut} = useAuth();
-//   console.log(user);
-
-//   const handleLogOut = () =>{
-//     logOut()
-//     .then()
-//     .catch(error => {
-//       console.log(error);
-//     })
-//   }
-
-//  const links = <>
-//       <li><NavLink to="/">Home</NavLink></li>
-//       <li><NavLink to="/meals">Meals</NavLink></li>
-      
-     
-//      {/* {
-//       user && <>
-//        <li><NavLink to="/dashboard/my-orders">My Orders</NavLink></li>
-//        <li><NavLink to="/dashboard/profile">Profile</NavLink></li>
-//       </>
-//      } */}
-//      {
-//       user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-//      }
-      
-//  </>
-
-
-
-//     return (
-//        <div className="navbar bg-base-100 shadow-sm">
-//   <div className="navbar-start">
-//     <div className="dropdown">
-//       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-//         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-//       </div>
-//       <ul
-//         tabIndex="-1"
-//         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-//         {links}
-//       </ul>
-//     </div>
-//     <img className='h-[50px] w-[50px] rounded-3xl' src={logoImg} alt="" />
-//     <a className="btn btn-ghost text-xl">LocalChefBazaar</a>
-//   </div>
-//   <div className="navbar-center hidden lg:flex">
-//     <ul className="menu menu-horizontal px-1">
-//        {links}
-//     </ul>
-//   </div>
-//   <div className="navbar-end">
-   
-  
-//    {/* { 
-//     user ?  
-     
-//     <a onClick={handleLogOut} className="btn btn-primary">LogOut</a> 
-//     :  
-//     <Link className="btn" to='/login'>Login</Link>
-//    } */}
-
-//    {
-//     user ? (
-//       <div className="flex items-center gap-3">
-//       {/* User Photo */}
-//       <img
-//         src={user?.photoURL}
-//         alt={user?.displayName || "User"}
-//         className="w-10 h-10 rounded-full object-cover border"
-//       />
-
-
-//       {/* Logout Button */}
-//       <a onClick={handleLogOut} className="btn btn-primary">
-//         LogOut
-//       </a>
-//     </div>
-//     ): 
-//     <Link className="btn" to='/login'>Login</Link>
-//    }
-   
-//   </div>
-// </div>
-//     );
-// };
-
-// export default Navbar;
-
-
-import React from 'react';
-import { Link, NavLink } from 'react-router';
-import logoImg from '../../../../assets/logo.png';
-import useAuth from '../../../../hooks/useAuth';
 
 const Navbar = () => {
+
   const { user, logOut } = useAuth();
 
+
   const handleLogOut = () => {
-    logOut().catch(error => console.log(error));
+    logOut()
+      .catch(error => console.log(error));
   };
+
+
+  const navVariants = {
+    hidden: {
+      opacity: 0,
+      y: -40,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    },
+  };
+
+
+  const linkVariants = {
+    hover: {
+      scale: 1.05,
+    },
+  };
+
+
 
   const links = (
     <>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/meals">Meals</NavLink></li>
-      
-    
-      {user ?(<div className='flex'>
-      <li className='mr-2'><NavLink to="/blog">Blog</NavLink></li>
-      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-      </div>): <li><NavLink to="/about">About</NavLink></li>
+      <motion.li whileHover="hover" variants={linkVariants}>
+        <NavLink to="/">
+          Home
+        </NavLink>
+      </motion.li>
+
+
+      <motion.li whileHover="hover" variants={linkVariants}>
+        <NavLink to="/meals">
+          Meals
+        </NavLink>
+      </motion.li>
+
+
+      {
+        user ? (
+          <>
+            <motion.li whileHover="hover" variants={linkVariants}>
+              <NavLink to="/blog">
+                Blog
+              </NavLink>
+            </motion.li>
+
+
+            <motion.li whileHover="hover" variants={linkVariants}>
+              <NavLink to="/dashboard">
+                Dashboard
+              </NavLink>
+            </motion.li>
+          </>
+        )
+        :
+        (
+          <motion.li whileHover="hover" variants={linkVariants}>
+            <NavLink to="/about">
+              About
+            </NavLink>
+          </motion.li>
+        )
       }
+
     </>
   );
 
+
+
   return (
-    // <div className="navbar bg-base-100 shadow-sm">
 
-    //   {/* ── Navbar Start ── */}
-    //   <div className="navbar-start">
-    //     <div className="dropdown">
-    //       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-    //         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    //           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-    //         </svg>
-    //       </div>
-    //       <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-    //         {links}
-    //       </ul>
-    //     </div>
-    //     <img className="h-[50px] w-[50px] rounded-3xl" src={logoImg} alt="" />
-    //     <a className="btn btn-ghost text-xl">LocalChefBazaar</a>
-    //   </div>
+    <motion.div
 
-    //   {/* ── Navbar Center ── */}
-    //   <div className="navbar-center hidden lg:flex">
-    //     <ul className="menu menu-horizontal px-1">
-    //       {links}
-    //     </ul>
-    //   </div>
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
 
-    //   {/* ── Navbar End ── */}
-    //   <div className="navbar-end">
-    //     {user ? (
-    //       <div className="flex items-center gap-3">
+      className="
+      max-w-7xl
+      mx-auto
+      mt-4
+      sticky
+      top-4
+      z-50
+      rounded-3xl
+      overflow-hidden
+      bg-gradient-to-r
+      from-orange-50
+      via-white
+      to-yellow-50
+      shadow-xl
+      border
+      border-orange-100
+      "
 
-    //         {/* ── Profile picture with dropdown ── */}
-    //         <div className="dropdown dropdown-end">
-    //           {/* Trigger: profile picture */}
-    //           <div tabIndex={0} role="button" className="cursor-pointer">
-    //             <img
-    //               src={user?.photoURL || `https://ui-avatars.com/api/?name=${user?.displayName}&background=random`}
-    //               alt={user?.displayName || 'User'}
-    //               className="w-10 h-10 rounded-full object-cover border-2 border-primary"
-    //             />
-    //           </div>
+    >
 
-    //           {/* Dropdown: name + email only */}
-    //           <div
-    //             tabIndex={0}
-    //             className="dropdown-content bg-base-100 rounded-box z-50 mt-3 w-60 shadow-lg border border-base-200"
-    //           >
-    //             <div className="flex items-center gap-3 px-4 py-4">
-    //               <img
-    //                 src={user?.photoURL || `https://ui-avatars.com/api/?name=${user?.displayName}&background=random`}
-    //                 alt={user?.displayName || 'User'}
-    //                 className="w-12 h-12 rounded-full object-cover border flex-shrink-0"
-    //               />
-    //               <div className="overflow-hidden">
-    //                 <p className="font-semibold text-sm text-base-content truncate">
-    //                   {user?.displayName || 'Anonymous'}
-    //                 </p>
-    //                 <p className="text-xs text-gray-400 truncate">
-    //                   {user?.email}
-    //                 </p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
 
-    //         {/* ── Logout button unchanged ── */}
-    //         <a onClick={handleLogOut} className="btn btn-primary">LogOut</a>
+      <div
+        className="
+        navbar
+        px-4
+        md:px-6
+        "
+      >
 
-    //       </div>
-    //     ) : (
-    //       <Link className="btn" to="/login">Login</Link>
-    //     )}
-    //   </div>
 
-    // </div>
 
-    <div className="w-full bg-base-100 shadow-sm sticky top-0 z-50">
-  <div className="navbar max-w-7xl mx-auto px-4">
+        {/* LEFT SIDE */}
 
-    {/* Navbar Start */}
-    <div className="navbar-start">
+        <div className="navbar-start">
 
-      {/* Mobile Menu */}
-      <div className="dropdown lg:hidden">
-        <div tabIndex={0} role="button" className="btn btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </div>
 
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-[100]"
-        >
-          {links}
-        </ul>
-      </div>
+          {/* Mobile Menu */}
 
-      {/* Logo */}
-      <Link to="/" className="flex items-center gap-2">
-        <img
-          className="h-10 w-10 rounded-full"
-          src={logoImg}
-          alt="Logo"
-        />
-        <span className="font-bold text-lg md:text-xl">
-          LocalChefBazaar
-        </span>
-      </Link>
-    </div>
-
-    {/* Navbar Center */}
-    <div className="navbar-center hidden lg:flex">
-      <ul className="menu menu-horizontal gap-2">
-        {links}
-      </ul>
-    </div>
-
-    {/* Navbar End */}
-    <div className="navbar-end">
-      {user ? (
-        <div className="flex items-center gap-2 md:gap-4">
-
-          {/* Profile */}
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button">
-              <img
-                src={
-                  user?.photoURL ||
-                  `https://ui-avatars.com/api/?name=${user?.displayName}&background=random`
-                }
-                alt={user?.displayName}
-                className="w-10 h-10 rounded-full border-2 border-primary object-cover cursor-pointer"
-              />
-            </div>
+          <div className="dropdown lg:hidden">
 
             <div
               tabIndex={0}
-              className="dropdown-content bg-base-100 rounded-box w-64 mt-3 shadow-lg border"
+              role="button"
+              className="
+              btn
+              btn-ghost
+              rounded-full
+              "
             >
-              <div className="p-4">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={
-                      user?.photoURL ||
-                      `https://ui-avatars.com/api/?name=${user?.displayName}&background=random`
-                    }
-                    alt={user?.displayName}
-                    className="w-12 h-12 rounded-full"
-                  />
 
-                  <div>
-                    <p className="font-semibold">
-                      {user?.displayName}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {user?.email}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+
+              </svg>
+
+
             </div>
+
+
+
+            <ul
+              tabIndex={0}
+              className="
+              menu
+              menu-sm
+              dropdown-content
+              mt-3
+              w-52
+              bg-white
+              rounded-2xl
+              shadow-xl
+              p-3
+              z-[100]
+              "
+            >
+
+              {links}
+
+            </ul>
+
+
           </div>
 
-          <button
-            onClick={handleLogOut}
-            className="btn btn-primary btn-sm md:btn-md"
-          >
-            Logout
-          </button>
-        </div>
-      ) : (
-        <Link to="/login" className="btn btn-primary btn-sm md:btn-md">
-          Login
-        </Link>
-      )}
-    </div>
 
-  </div>
-</div>
+
+
+
+          {/* LOGO */}
+
+          <Link
+            to="/"
+            className="
+            flex
+            items-center
+            gap-2
+            "
+          >
+
+            <motion.img
+
+              whileHover={{
+                scale: 1.1,
+                rotate: 5
+              }}
+
+              src={logoImg}
+
+              alt="logo"
+
+              className="
+              w-10
+              h-10
+              md:w-12
+              md:h-12
+              rounded-full
+              shadow-md
+              "
+
+            />
+
+
+            <span
+              className="
+              font-bold
+              text-lg
+              md:text-xl
+              text-orange-600
+              "
+            >
+
+              Comfort Kitchen
+
+            </span>
+
+
+          </Link>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        {/* CENTER MENU */}
+
+
+        <div
+          className="
+          navbar-center
+          hidden
+          lg:flex
+          "
+        >
+
+          <ul
+            className="
+            menu
+            menu-horizontal
+            gap-3
+            font-medium
+            "
+          >
+
+            {links}
+
+          </ul>
+
+
+        </div>
+
+
+
+
+
+
+
+        {/* RIGHT SIDE */}
+
+
+        <div
+          className="
+          navbar-end
+          "
+        >
+
+
+          {
+            user ?
+
+            (
+
+              <div
+                className="
+                flex
+                items-center
+                gap-3
+                "
+              >
+
+
+
+                {/* Profile Dropdown */}
+
+
+                <div
+                  className="
+                  dropdown
+                  dropdown-end
+                  "
+                >
+
+
+                  <motion.img
+
+                    whileHover={{
+                      scale:1.1
+                    }}
+
+                    tabIndex={0}
+
+                    src={
+                      user?.photoURL ||
+                      `https://ui-avatars.com/api/?name=${user?.displayName}`
+                    }
+
+                    alt="user"
+
+                    className="
+                    w-10
+                    h-10
+                    rounded-full
+                    object-cover
+                    cursor-pointer
+                    border-2
+                    border-orange-400
+                    "
+
+                  />
+
+
+
+                  <div
+
+                    tabIndex={0}
+
+                    className="
+                    dropdown-content
+                    mt-3
+                    w-64
+                    bg-white
+                    rounded-2xl
+                    shadow-xl
+                    p-4
+                    "
+
+                  >
+
+
+                    <div
+                      className="
+                      flex
+                      items-center
+                      gap-3
+                      "
+                    >
+
+                      <img
+
+                        src={
+                          user?.photoURL ||
+                          `https://ui-avatars.com/api/?name=${user?.displayName}`
+                        }
+
+                        className="
+                        w-12
+                        h-12
+                        rounded-full
+                        "
+                      />
+
+
+                      <div>
+
+                        <p className="font-semibold">
+                          {user?.displayName}
+                        </p>
+
+
+                        <p className="
+                        text-sm
+                        text-gray-500
+                        ">
+                          {user?.email}
+                        </p>
+
+
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+
+
+
+
+                <motion.button
+
+                  whileHover={{
+                    scale:1.05
+                  }}
+
+                  whileTap={{
+                    scale:.95
+                  }}
+
+                  onClick={handleLogOut}
+
+                  className="
+                  bg-orange-500
+                  hover:bg-orange-600
+                  text-white
+                  px-4
+                  py-2
+                  rounded-full
+                  text-sm
+                  "
+                >
+
+                  Logout
+
+                </motion.button>
+
+
+
+              </div>
+
+            )
+
+
+            :
+
+
+            (
+
+              <Link
+
+                to="/login"
+
+                className="
+                bg-orange-500
+                hover:bg-orange-600
+                text-white
+                px-5
+                py-2
+                rounded-full
+                "
+
+              >
+
+                Login
+
+              </Link>
+
+            )
+
+          }
+
+
+        </div>
+
+
+
+      </div>
+
+
+    </motion.div>
+
   );
 };
+
 
 export default Navbar;

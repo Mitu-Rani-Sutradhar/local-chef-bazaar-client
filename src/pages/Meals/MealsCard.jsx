@@ -1,46 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
-const MealsCard = ({meal}) => {
- const {_id,foodName, rating, 
-foodIamge
-, price = "foodPrice", 
-deliveryArea} = meal;
-console.log(meal);
+const MealsCard = ({ meal }) => {
+  const {
+    _id,
+    foodName,
+    rating,
+    foodIamge, // যদি database-এ foodIamge থাকে তাহলে এটাকে foodIamge রাখবে
+    price,
+    deliveryArea,
+  } = meal;
 
+  return (
+    <div className="card w-full h-full bg-base-100 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+      <figure className="h-56 overflow-hidden">
+        <img
+          src={foodIamge}
+          alt={foodName}
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+        />
+      </figure>
 
-   
+      <div className="card-body">
+        <h2 className="card-title text-xl">{foodName}</h2>
 
-    return (
-        
-     <div className="card bg-base-100 w-75 h-100 shadow-sm mb-5">
-  <figure className="p-4">
-    <img
-      src={
-foodIamge
-}
-      className="rounded-xl  w-[320px] h-[180px]" />
-  </figure>
-  <div className="card-body px-4 py-2">
-    <div className=''>
-        <p className="font-semibold"><span className='text-lg font-bold'>Chef Id:</span> {_id}</p>
-        <p className='text-lg'><span className='font-bold'>Food-Name:</span> {foodName}</p>
-        <p className='text-lg'><span className='font-bold'>Delivery-Area:</span> {deliveryArea}</p>
+        <p>
+          <span className="font-semibold">⭐ Rating:</span> {rating}
+        </p>
+
+        <p>
+          <span className="font-semibold">💰 Price:</span> ${price}
+        </p>
+
+        <p>
+          <span className="font-semibold">📍 Delivery:</span> {deliveryArea}
+        </p>
+
+        <div className="card-actions justify-center mt-4">
+          <Link to={`/meals/${_id}`}>
+            <button className="btn btn-primary rounded-full px-6">
+              See Details
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
-    <div className='flex justify-between'>
-        <p className='text-lg font-bold'>Price: <span className='bg-amber-300 p-1 rounded-2xl'>{price}</span></p>
-        <p className='text-lg font-bold'>Rating: <span className='text-red-500'>{rating}</span></p>
-    </div>
-
-  
-    <div className="text-center">
-       
-      <Link to ={`/meals/${_id}`}><button className="btn btn-primary p-2">See Details</button></Link>
-    </div>
-  </div>
-</div>
-      
-    );
+  );
 };
 
 export default MealsCard;
