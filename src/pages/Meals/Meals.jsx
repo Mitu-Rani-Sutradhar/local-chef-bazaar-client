@@ -1,3 +1,4 @@
+```jsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
@@ -5,12 +6,18 @@ import MealsCard from "./MealsCard";
 
 const Meals = () => {
   const [meals, setMeals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://local-chef-bazaar-server-two.vercel.app/meals")
       .then((res) => res.json())
       .then((data) => {
         setMeals(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching meals:", error);
+        setLoading(false);
       });
   }, []);
 
@@ -18,19 +25,17 @@ const Meals = () => {
     e.preventDefault();
     const value = e.target.search.value;
     console.log(value);
-
-    // Search API call later
   };
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-orange-50 via-white to-amber-50 min-h-screen">
       <div className="w-11/12 max-w-7xl mx-auto">
+
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <span className="text-orange-500 font-semibold uppercase tracking-widest">
@@ -42,8 +47,8 @@ const Meals = () => {
           </h2>
 
           <p className="max-w-2xl mx-auto mt-4 text-gray-600">
-            Browse freshly prepared homemade meals from talented local chefs and
-            discover your next favorite dish.
+            Browse freshly prepared homemade meals from talented local chefs
+            and discover your next favorite dish.
           </p>
 
           <div className="mt-5 inline-flex bg-orange-500 text-white px-5 py-2 rounded-full font-semibold shadow">
@@ -52,12 +57,8 @@ const Meals = () => {
         </motion.div>
 
         {/* Search */}
-        <motion.form
+        <form
           onSubmit={handleSearchSubmit}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
         >
           <div className="relative w-full sm:max-w-lg">
@@ -77,48 +78,19 @@ const Meals = () => {
           >
             Search
           </button>
-        </motion.form>
+        </form>
 
-        {/* Cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.12,
-              },
-            },
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-        >
-          {meals.map((meal) => (
-            <motion.div
-              key={meal._id}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 40,
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                },
-              }}
-              whileHover={{
-                y: -10,
-              }}
-              transition={{ duration: 0.4 }}
-            >
-              <MealsCard meal={meal} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Loading */}
+        {loading ? (
+          <div className="text-center py-20">
+            <span className="loading loading-spinner loading-lg text-orange-500"></span>
 
-        {/* Empty State */}
-        {meals.length === 0 && (
+            <p className="mt-4 text-gray-500">
+              Loading delicious meals...
+            </p>
+          </div>
+        ) : meals.length === 0 ? (
+          /* Empty State */
           <div className="text-center py-20">
             <h3 className="text-2xl font-bold text-gray-600">
               No Meals Found 🍽️
@@ -128,10 +100,41 @@ const Meals = () => {
               Please check back later for delicious homemade meals.
             </p>
           </div>
+        ) : (
+          /* Cards */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {meals.map((meal) => (
+              <motion.div
+                key={meal._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -8 }}
+              >
+                <MealsCard meal={meal} />
+              </motion.div>
+            ))}
+          </div>
         )}
+
       </div>
     </section>
   );
 };
 
 export default Meals;
+```
+
+### কী কী update হলো
+
+* ✅ `loading` state যোগ করেছি
+* ✅ API load হওয়ার সময় সুন্দর loading spinner দেখাবে
+* ✅ `whileInView` বাদ দিয়েছি
+* ✅ `staggerChildren` বাদ দিয়েছি
+* ✅ সব card data আসার পর দ্রুত render হবে
+* ✅ API error হলে console-এ error দেখাবে
+* ✅ কোনো meal না থাকলে `No Meals Found` দেখাবে
+* ✅ Card-এর ছোট animation রাখা হয়েছে
+* ✅ তোমার search section একই রাখা হয়েছে
+
+**এখন এই code বসিয়ে run করো।** Card যদি তারপরও অনেক দেরিতে আসে, তাহলে পরের ধাপে আমরা `MealsCard`-এর image loading optimize করব—সেটা করলে page আরও দ্রুত feel করবে।
