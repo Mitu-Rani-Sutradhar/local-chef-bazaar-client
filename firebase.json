@@ -1,5 +1,7 @@
+
 {
   "hosting": {
+    "target": "comfortkitchen",
     "public": "dist",
     "ignore": [
       "firebase.json",

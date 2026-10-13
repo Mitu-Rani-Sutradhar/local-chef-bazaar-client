@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "chef-bazaar-8992b"
-  }
+  },
+  "targets": {
+    "chef-bazaar-8992b": {
+      "hosting": {
+        "comfortkitchen": [
+          "comfort-kitchen-12345"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

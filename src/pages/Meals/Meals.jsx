@@ -1,4 +1,4 @@
-```jsx
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
@@ -123,18 +123,4 @@ const Meals = () => {
 };
 
 export default Meals;
-```
 
-### কী কী update হলো
-
-* ✅ `loading` state যোগ করেছি
-* ✅ API load হওয়ার সময় সুন্দর loading spinner দেখাবে
-* ✅ `whileInView` বাদ দিয়েছি
-* ✅ `staggerChildren` বাদ দিয়েছি
-* ✅ সব card data আসার পর দ্রুত render হবে
-* ✅ API error হলে console-এ error দেখাবে
-* ✅ কোনো meal না থাকলে `No Meals Found` দেখাবে
-* ✅ Card-এর ছোট animation রাখা হয়েছে
-* ✅ তোমার search section একই রাখা হয়েছে
-
-**এখন এই code বসিয়ে run করো।** Card যদি তারপরও অনেক দেরিতে আসে, তাহলে পরের ধাপে আমরা `MealsCard`-এর image loading optimize করব—সেটা করলে page আরও দ্রুত feel করবে।
